@@ -1,4 +1,4 @@
-const CACHE = 'aistack-pocket-v5'
+const CACHE = 'aistack-pocket-v6'
 const SHELL = ['./pocket.html', './pocket.webmanifest', './pocket-icon.svg']
 self.addEventListener('install', (event) => event.waitUntil(Promise.all([
   self.skipWaiting(),
