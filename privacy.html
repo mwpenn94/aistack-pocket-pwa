@@ -4,15 +4,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0e1115">
-    <title>Sidekick relay privacy</title>
+    <title>Sidekick privacy</title>
   </head>
   <body>
     <main>
-      <p>Sidekick relay</p>
-      <h1>Private by design</h1>
-      <p>This host serves the Sidekick phone app and forwards only bounded, end-to-end encrypted pairing frames between a paired phone and Sidekick on your desktop.</p>
-      <p>The relay does not execute AI tasks, decrypt or retain task text, results, files, pairing material, provider credentials, accounts, analytics, or a database.</p>
-      <p>Sidekick on your desktop remains the execution authority. It connects outbound to the relay; this service does not expose a desktop or dispatcher endpoint.</p>
+      <p>Sidekick</p>
+      <h1>What this host does with your requests</h1>
+      <p>This host serves the Sidekick phone app, forwards encrypted messages between your phone and Sidekick on your PC, and runs Sidekick&rsquo;s optional free cloud.</p>
+
+      <h2>Phone to your PC</h2>
+      <p>Requests to your PC are encrypted on your phone and opened only by Sidekick on your PC. This host forwards bounded encrypted frames; it cannot read them and does not store them. Sidekick on your PC connects out to this host, so no desktop endpoint is exposed.</p>
+
+      <h2>Free cloud (optional)</h2>
+      <p>Only a phone holding a cloud session from your PC&rsquo;s pairing code can use it. When you send a request to the cloud, its text travels over HTTPS to this host and is answered by Google&rsquo;s Gemma 4 model on Cloudflare Workers AI. This route is not end-to-end encrypted, because the model has to read the request to answer it.</p>
+      <p>This host does not store request text or answers. For each cloud session it keeps a hash of the session key, its label, when it was created and last used, and request times from the last 10 minutes (to limit bursts). It also keeps daily usage totals and a check of the account&rsquo;s plan, so the cloud stops for the day instead of spending money.</p>
+
+      <h2>On your phone</h2>
+      <p>The phone app keeps the link to your PC and its cloud session in this browser&rsquo;s storage on your phone, so it stays paired after reloads and home-screen launches. &ldquo;Forget this PC&rdquo; and &ldquo;Turn off cloud on this phone&rdquo; in the connection sheet remove them. Removing the phone in Sidekick on your PC stops both.</p>
+
+      <h2>Everything else</h2>
+      <p>This host adds no accounts, ads, or analytics of its own. Cloudflare, which runs this host, processes requests under its own terms.</p>
       <p><a href="/pocket.html">Return to Sidekick</a></p>
     </main>
   </body>
