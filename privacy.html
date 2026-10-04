@@ -13,7 +13,7 @@
       <p>This host serves the Sidekick phone app, forwards encrypted messages between your phone and Sidekick on your PC, and runs Sidekick&rsquo;s optional free cloud.</p>
 
       <h2>Phone to your PC</h2>
-      <p>Requests to your PC are encrypted on your phone and opened only by Sidekick on your PC. This host forwards bounded encrypted frames; it cannot read them and does not store them. Sidekick on your PC connects out to this host, so no desktop endpoint is exposed.</p>
+      <p>Requests to your PC are encrypted on your phone and opened only by Sidekick on your PC. This host forwards bounded encrypted frames; it cannot read them and does not store them. While the phone app is open, it sends a small encrypted check about every 20 seconds so it can tell you whether your PC is on; like every other frame, this host can see that a frame passed, but not what it says. Sidekick on your PC connects out to this host, so no desktop endpoint is exposed.</p>
 
       <h2>Free cloud (optional)</h2>
       <p>Only a phone holding a cloud session from your PC&rsquo;s pairing code can use it. When you send a request to the cloud, its text travels over HTTPS to this host and is answered by Google&rsquo;s Gemma 4 model on Cloudflare Workers AI. This route is not end-to-end encrypted, because the model has to read the request to answer it.</p>
